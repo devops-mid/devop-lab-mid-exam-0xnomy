@@ -1,3 +1,4 @@
 Flask==2.3.2
 Flask-SQLAlchemy==3.0.5
+SQLAlchemy==2.0.21  # Ensure it's explicitly added
 psycopg2-binary==2.9.6

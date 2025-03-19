@@ -5,3 +5,4 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     phone = db.Column(db.String(15))  # Optional field
+    laptop = db.Column(db.String(100))  # New field

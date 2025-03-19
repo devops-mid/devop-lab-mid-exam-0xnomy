@@ -1,18 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Web App</title>
+    <title>DevOps Lab Mid - Web Application</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --text-color: #2b2d42;
+            --light-text: #4a4e69;
+            --background: #f8f9fa;
+            --card-bg: #ffffff;
+            --success: #4cc9f0;
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(67, 97, 238, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(67, 97, 238, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(72, 149, 239, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .logo {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            color: var(--light-text);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(67, 97, 238, 0.15);
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: calc(var(--border-radius) / 2);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: calc(var(--border-radius) / 2);
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .author {
+            margin-top: 1.5rem;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .author-name {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 0.3rem 0;
+        }
+
+        .author-reg {
+            font-size: 0.85rem;
+        }
+
+        .divider {
+            height: 1px;
+            width: 50px;
+            background: #e9ecef;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Welcome to the Simple Web App</h1>
-    <form action="/submit" method="post">
-        Name: <input type="text" name="name" required><br>
-        Email: <input type="email" name="email" required><br>
-        Phone: <input type="text" name="phone"><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <h1 class="logo">Simple Web App</h1>
+        <p class="subtitle">Complete the form below to submit your information</p>
+
+        <div class="card">
+            <form action="/submit" method="post">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
+                </div>
+
+                <div class="form-group">
+                    <label for="laptop">Laptop Model</label>
+                    <input type="text" id="laptop" name="laptop" placeholder="Enter your laptop model">
+                </div>
+
+                <button type="submit" class="btn">Submit Information</button>
+            </form>
+        </div>
+
+        <div class="author">
+            <span>Created for DevOps Lab Mid-Term</span>
+            <span class="divider"></span>
+            <span class="author-name">Nauman Ali Murad</span>
+            <span class="author-reg">Registration # 2022479</span>
+        </div>
+    </div>
 </body>
+
 </html>
